@@ -1,6 +1,6 @@
 import Head from 'next/head'
-// useStateを使えるようにする
-import { useState } from 'react'
+// useState, useEffectを使えるようにする
+import { useEffect, useState } from 'react'
 
 export default function Home() {
   /**
@@ -25,6 +25,15 @@ export default function Home() {
       isMale: !prevPerson.isMale
     }))
   }
+
+  /**
+   * useEffect
+   * 第1引数 実行させたい内容を記述
+   * 第2引数 useEffectを発火させたい対象のデータを入れる(空にすると初回のみ実行される)
+   */
+  useEffect(() => {
+    console.log(`${count}回clickされました。`)
+  }, [count])
 
   return (
     <>
