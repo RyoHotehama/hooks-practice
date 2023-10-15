@@ -1,6 +1,13 @@
 import Head from 'next/head'
-// useState, useEffectを使えるようにする
-import { useEffect, useState } from 'react'
+// useState, useEffect, createContextを使えるようにする
+import { createContext, useEffect, useState } from 'react'
+import Sample1 from './component/sample1'
+import Sample3 from './component/sample3'
+
+const TITLE = 'Contextの練習';
+
+// Contextオブジェクトを作成する
+export const TitleContext = createContext();
 
 export default function Home() {
   /**
@@ -67,6 +74,12 @@ export default function Home() {
           性別を変える
         </button>
       </div>
+      <div>
+        <Sample1 title={TITLE}/>
+      </div>
+      <TitleContext.Provider value={TITLE}>
+        <Sample3 />
+      </TitleContext.Provider>
     </>
   )
 }
